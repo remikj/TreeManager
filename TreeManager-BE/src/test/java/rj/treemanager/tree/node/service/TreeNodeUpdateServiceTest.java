@@ -43,7 +43,7 @@ class TreeNodeUpdateServiceTest {
 
         verify(treeNodeChildSavingService).saveChildWithChildrenForParent(any(), argumentCaptor.capture());
         assertEquals(newValue, argumentCaptor.getValue().getValue());
-        assertEquals(childrenList, argumentCaptor.getValue().getChildNodes());
+        assertEquals(childrenList, argumentCaptor.getValue().getChildren());
     }
 
     @Test

@@ -10,21 +10,21 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class TestUtil {
 
     public static TreeNode createDefaultRootNode() {
-        return createNodeWithValueSumToRootAndChildNodes(0, 0, null);
+        return createNodeWithValueSumToRootAndChildren(0, 0, null);
     }
 
-    public static TreeNode createNodeWithValueSumToRootAndChildNodes(long value, long sumToRoot, List<TreeNode> childNodes) {
-        return new TreeNode(null, value, sumToRoot, null, childNodes);
+    public static TreeNode createNodeWithValueSumToRootAndChildren(long value, long sumToRoot, List<TreeNode> children) {
+        return new TreeNode(null, value, sumToRoot, null, children);
     }
 
     public static void assertEqualTree(TreeNode expected, TreeNode actual) {
         assertEquals(expected.getValue(), actual.getValue());
         assertEquals(expected.getSumToRoot(), actual.getSumToRoot());
-        if (expected.getChildNodes() != null) {
-            assertNotNull(actual.getChildNodes());
-            assertEquals(expected.getChildNodes().size(), actual.getChildNodes().size());
-            for (var i = 0; i < expected.getChildNodes().size(); i++) {
-                assertEqualTree(expected.getChildNodes().get(i), actual.getChildNodes().get(i));
+        if (expected.getChildren() != null) {
+            assertNotNull(actual.getChildren());
+            assertEquals(expected.getChildren().size(), actual.getChildren().size());
+            for (var i = 0; i < expected.getChildren().size(); i++) {
+                assertEqualTree(expected.getChildren().get(i), actual.getChildren().get(i));
             }
         }
     }

@@ -1,8 +1,6 @@
 package rj.treemanager.tree.node;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
@@ -35,23 +33,23 @@ public class TreeNode {
     @OneToMany(mappedBy = "parentNode", fetch = FetchType.LAZY, orphanRemoval = true)
     @Cascade(CascadeType.REMOVE)
     @JsonView(AddWithChildrenView.class)
-    private List<TreeNode> childNodes;
+    private List<TreeNode> children;
 
     public TreeNode(long value) {
         this.value = value;
     }
 
-    public TreeNode(long value, List<TreeNode> childNodes) {
+    public TreeNode(long value, List<TreeNode> children) {
         this.value = value;
-        this.childNodes = childNodes;
+        this.children = children;
     }
 
     public TreeNode(TreeNode treeNode) {
         this.value = treeNode.getValue();
-        if (treeNode.getChildNodes() == null) {
+        if (treeNode.getChildren() == null) {
             return;
         }
-        this.childNodes = treeNode.getChildNodes().stream()
+        this.children = treeNode.getChildren().stream()
                 .map(TreeNode::new)
                 .collect(Collectors.toList());
     }

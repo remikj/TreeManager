@@ -75,10 +75,10 @@ class TreeNodeMovingServiceTest {
         assertNotEquals(sourceNode, actualSavedNode);
         assertEquals(sourceNode.getValue(), actualSavedNode.getValue());
         assertNull(actualSavedNode.getId());
-        if (sourceNode.getChildNodes() != null) {
-            assertEquals(sourceNode.getChildNodes().size(), actualSavedNode.getChildNodes().size());
-            for (var i = 0; i < sourceNode.getChildNodes().size(); i++) {
-                assertTreeNodesCopied(sourceNode.getChildNodes().get(i), actualSavedNode.getChildNodes().get(i));
+        if (sourceNode.getChildren() != null) {
+            assertEquals(sourceNode.getChildren().size(), actualSavedNode.getChildren().size());
+            for (var i = 0; i < sourceNode.getChildren().size(); i++) {
+                assertTreeNodesCopied(sourceNode.getChildren().get(i), actualSavedNode.getChildren().get(i));
             }
         }
     }

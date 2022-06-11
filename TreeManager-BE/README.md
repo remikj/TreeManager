@@ -31,7 +31,7 @@ Application is used to manage data in following format:
   "id": 1,
   "value": 5,
   "sumToRoot": 5,
-  "childNodes": []
+  "children": []
 }
 ```
 
@@ -40,7 +40,7 @@ where:
 - id is a tree node identifier
 - value is a number held by root and used for calculating sumToRoot
 - sumToRoot is a sum of all values to root tree node
-- childNodes is a list of all child tree nodes
+- children is a list of all child tree nodes
 
 ### Using the API
 
@@ -69,17 +69,17 @@ Sample response
   "id": 1,
   "value": 0,
   "sumToRoot": 0,
-  "childNodes": [
+  "children": [
     {
       "id": 2,
       "value": 14,
       "sumToRoot": 14,
-      "childNodes": [
+      "children": [
         {
           "id": 5,
           "value": 25,
           "sumToRoot": 39,
-          "childNodes": []
+          "children": []
         }
       ]
     },
@@ -87,13 +87,13 @@ Sample response
       "id": 3,
       "value": 12,
       "sumToRoot": 12,
-      "childNodes": []
+      "children": []
     },
     {
       "id": 4,
       "value": -92,
       "sumToRoot": -92,
-      "childNodes": []
+      "children": []
     }
   ]
 }
@@ -115,10 +115,10 @@ Example json that can be used to override the tree
 ```json
 {
   "value": 4,
-  "childNodes": [
+  "children": [
     {
       "value": 3,
-      "childNodes": [
+      "children": [
         {
           "value": 2
         }
@@ -126,10 +126,10 @@ Example json that can be used to override the tree
     },
     {
       "value": 19,
-      "childNodes": [
+      "children": [
         {
           "value": 2,
-          "childNodes": [
+          "children": [
             {
               "value": 3
             }
@@ -163,7 +163,7 @@ Tree after reset:
   "id": 6,
   "value": 0,
   "sumToRoot": 0,
-  "childNodes": []
+  "children": []
 }
 ```
 
@@ -187,12 +187,12 @@ Example response
   "id": 8,
   "value": 3,
   "sumToRoot": 7,
-  "childNodes": [
+  "children": [
     {
       "id": 9,
       "value": 2,
       "sumToRoot": 9,
-      "childNodes": []
+      "children": []
     }
   ]
 }
@@ -240,7 +240,7 @@ curl --request POST \
   --header 'Content-Type: application/json' \
   --data '{
 	"value": 25,
-	"childNodes": [{"value": 15},{"value": -13}]
+	"children": [{"value": 15},{"value": -13}]
 }'
 ```
 

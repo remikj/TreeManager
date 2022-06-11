@@ -46,12 +46,12 @@ public class TreeNodeChildSavingService {
      * @param treeNode   node that should be added as child to parentNode
      */
     public void saveChildWithChildrenForParent(TreeNode parentNode, TreeNode treeNode) {
-        var childNodes = treeNode.getChildNodes();
+        var children = treeNode.getChildren();
         var savedNode = saveChild(parentNode, treeNode);
-        if (childNodes == null) {
+        if (children == null) {
             return;
         }
-        for (var child : childNodes) {
+        for (var child : children) {
             saveChildWithChildrenForParent(savedNode, child);
         }
     }

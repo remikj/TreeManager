@@ -64,10 +64,10 @@ class TreeControllerIT {
     @Test
     @Order(3)
     void getTreeAfterOverride() throws Exception {
-        var expected = createNodeWithValueSumToRootAndChildNodes(1, 1, List.of(
-                createNodeWithValueSumToRootAndChildNodes(2, 3, List.of(
-                        createNodeWithValueSumToRootAndChildNodes(3, 6, null),
-                        createNodeWithValueSumToRootAndChildNodes(10, 13, null)
+        var expected = createNodeWithValueSumToRootAndChildren(1, 1, List.of(
+                createNodeWithValueSumToRootAndChildren(2, 3, List.of(
+                        createNodeWithValueSumToRootAndChildren(3, 6, null),
+                        createNodeWithValueSumToRootAndChildren(10, 13, null)
                 ))
         ));
         var mvcResult = mockMvc.perform(get("/tree"))

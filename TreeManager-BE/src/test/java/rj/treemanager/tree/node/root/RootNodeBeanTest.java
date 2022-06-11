@@ -49,7 +49,7 @@ class RootNodeBeanTest {
         assertNull(savedNode.getParentNode());
         assertEquals(0, savedNode.getSumToRoot());
         assertEquals(0, savedNode.getValue());
-        assertNull(savedNode.getChildNodes());
+        assertNull(savedNode.getChildren());
         assertNull(savedNode.getId());
     }
 
@@ -101,8 +101,8 @@ class RootNodeBeanTest {
 
     @Test
     void resetRootNode_shouldDeleteChildrenAndSetNodeValueToZero() {
-        List<TreeNode> childNodes = List.of(new TreeNode(), new TreeNode());
-        TreeNode expectedRootNode = new TreeNode(1L, 5, 5, null, childNodes);
+        List<TreeNode> children = List.of(new TreeNode(), new TreeNode());
+        TreeNode expectedRootNode = new TreeNode(1L, 5, 5, null, children);
         when(treeNodeRepository.findByParentNode(null)).thenReturn(List.of(expectedRootNode));
         
         rootNodeBean.resetRootNode();
@@ -110,8 +110,7 @@ class RootNodeBeanTest {
         verify(treeNodeRepository).delete(expectedRootNode);
         verify(treeNodeChildService).saveChildWithChildrenForParent(eq(null), treeNodeArgumentCaptor.capture());
         TreeNode value = treeNodeArgumentCaptor.getValue();
-        assertNull(value.getChildNodes());
-//        assertEquals(1, value.getId());
+        assertNull(value.getChildren());
         assertEquals(0, value.getValue());
         assertEquals(0, value.getSumToRoot());
     }

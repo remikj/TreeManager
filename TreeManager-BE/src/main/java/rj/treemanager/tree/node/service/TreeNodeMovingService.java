@@ -50,8 +50,8 @@ public class TreeNodeMovingService {
         if (nodeToMove.getId().equals(targetParentNodeId)) {
             throw BadActionException.cannotMoveNodeToItsChild();
         }
-        if (nodeToMove.getChildNodes() == null) return;
-        for (var childNode : nodeToMove.getChildNodes()) {
+        if (nodeToMove.getChildren() == null) return;
+        for (var childNode : nodeToMove.getChildren()) {
             verifyTargetNodeIdNotInMovedNode(childNode, targetParentNodeId);
         }
     }

@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static rj.treemanager.TestUtil.assertEqualTree;
-import static rj.treemanager.TestUtil.createNodeWithValueSumToRootAndChildNodes;
+import static rj.treemanager.TestUtil.createNodeWithValueSumToRootAndChildren;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -48,7 +48,7 @@ public class TreeNodeControllerIT {
 
     @Test
     void getNodeWithId2() throws Exception {
-        var expected = createDefaultTree().getChildNodes().get(0);
+        var expected = createDefaultTree().getChildren().get(0);
 
         getNodeAndExpect(2, expected);
     }
@@ -61,8 +61,8 @@ public class TreeNodeControllerIT {
 
     @Test
     void deleteNodeWithId2() throws Exception {
-        var expected = createNodeWithValueSumToRootAndChildNodes(6, 6, List.of(
-                createNodeWithValueSumToRootAndChildNodes(3, 9, null)
+        var expected = createNodeWithValueSumToRootAndChildren(6, 6, List.of(
+                createNodeWithValueSumToRootAndChildren(3, 9, null)
         ));
 
         mockMvc.perform(delete("/tree/nodes/2"))
@@ -81,12 +81,12 @@ public class TreeNodeControllerIT {
     @Test
     void addChild_shouldAddChildToNode() throws Exception {
         var nodeToAdd = new TreeNode(-2);
-        var expected = createNodeWithValueSumToRootAndChildNodes(5, 11, List.of(
-                createNodeWithValueSumToRootAndChildNodes(17, 28, null),
-                createNodeWithValueSumToRootAndChildNodes(10, 21, List.of(
-                        createNodeWithValueSumToRootAndChildNodes(-5, 16, null)
+        var expected = createNodeWithValueSumToRootAndChildren(5, 11, List.of(
+                createNodeWithValueSumToRootAndChildren(17, 28, null),
+                createNodeWithValueSumToRootAndChildren(10, 21, List.of(
+                        createNodeWithValueSumToRootAndChildren(-5, 16, null)
                 )),
-                createNodeWithValueSumToRootAndChildNodes(-2, 9, null)
+                createNodeWithValueSumToRootAndChildren(-2, 9, null)
         ));
 
         mockMvc.perform(post("/tree/nodes/2/addChild")
@@ -101,13 +101,13 @@ public class TreeNodeControllerIT {
     @Test
     void addChildWithChildren_shouldAddChildWithChildrenToNode() throws Exception {
         var nodeToAdd = new TreeNode(-2, List.of(new TreeNode(-17)));
-        var expected = createNodeWithValueSumToRootAndChildNodes(5, 11, List.of(
-                createNodeWithValueSumToRootAndChildNodes(17, 28, null),
-                createNodeWithValueSumToRootAndChildNodes(10, 21, List.of(
-                        createNodeWithValueSumToRootAndChildNodes(-5, 16, null)
+        var expected = createNodeWithValueSumToRootAndChildren(5, 11, List.of(
+                createNodeWithValueSumToRootAndChildren(17, 28, null),
+                createNodeWithValueSumToRootAndChildren(10, 21, List.of(
+                        createNodeWithValueSumToRootAndChildren(-5, 16, null)
                 )),
-                createNodeWithValueSumToRootAndChildNodes(-2, 9, List.of(
-                        createNodeWithValueSumToRootAndChildNodes(-17, -8, null)
+                createNodeWithValueSumToRootAndChildren(-2, 9, List.of(
+                        createNodeWithValueSumToRootAndChildren(-17, -8, null)
                 ))
         ));
 
@@ -122,18 +122,18 @@ public class TreeNodeControllerIT {
 
     @Test
     void copyTo_shouldCopyChildWithChildrenToNode() throws Exception {
-        var expected = createNodeWithValueSumToRootAndChildNodes(6, 6, List.of(
-                createNodeWithValueSumToRootAndChildNodes(5, 11, List.of(
-                        createNodeWithValueSumToRootAndChildNodes(17, 28, null),
-                        createNodeWithValueSumToRootAndChildNodes(10, 21, List.of(
-                                createNodeWithValueSumToRootAndChildNodes(-5, 16, null)
+        var expected = createNodeWithValueSumToRootAndChildren(6, 6, List.of(
+                createNodeWithValueSumToRootAndChildren(5, 11, List.of(
+                        createNodeWithValueSumToRootAndChildren(17, 28, null),
+                        createNodeWithValueSumToRootAndChildren(10, 21, List.of(
+                                createNodeWithValueSumToRootAndChildren(-5, 16, null)
                         ))
                 )),
-                createNodeWithValueSumToRootAndChildNodes(3, 9, List.of(
-                        createNodeWithValueSumToRootAndChildNodes(5, 14, List.of(
-                                createNodeWithValueSumToRootAndChildNodes(17, 31, null),
-                                createNodeWithValueSumToRootAndChildNodes(10, 24, List.of(
-                                        createNodeWithValueSumToRootAndChildNodes(-5, 19, null)
+                createNodeWithValueSumToRootAndChildren(3, 9, List.of(
+                        createNodeWithValueSumToRootAndChildren(5, 14, List.of(
+                                createNodeWithValueSumToRootAndChildren(17, 31, null),
+                                createNodeWithValueSumToRootAndChildren(10, 24, List.of(
+                                        createNodeWithValueSumToRootAndChildren(-5, 19, null)
                                 ))
                         ))
                 ))
@@ -148,12 +148,12 @@ public class TreeNodeControllerIT {
 
     @Test
     void moveTo_shouldMoveChildWithChildrenToNode() throws Exception {
-        var expected = createNodeWithValueSumToRootAndChildNodes(6, 6, List.of(
-                createNodeWithValueSumToRootAndChildNodes(3, 9, List.of(
-                        createNodeWithValueSumToRootAndChildNodes(5, 14, List.of(
-                                createNodeWithValueSumToRootAndChildNodes(17, 31, null),
-                                createNodeWithValueSumToRootAndChildNodes(10, 24, List.of(
-                                        createNodeWithValueSumToRootAndChildNodes(-5, 19, null)
+        var expected = createNodeWithValueSumToRootAndChildren(6, 6, List.of(
+                createNodeWithValueSumToRootAndChildren(3, 9, List.of(
+                        createNodeWithValueSumToRootAndChildren(5, 14, List.of(
+                                createNodeWithValueSumToRootAndChildren(17, 31, null),
+                                createNodeWithValueSumToRootAndChildren(10, 24, List.of(
+                                        createNodeWithValueSumToRootAndChildren(-5, 19, null)
                                 ))
                         ))
                 ))
@@ -177,14 +177,14 @@ public class TreeNodeControllerIT {
     }
 
     private TreeNode createDefaultTree() {
-        return createNodeWithValueSumToRootAndChildNodes(6, 6, List.of(
-                createNodeWithValueSumToRootAndChildNodes(5, 11, List.of(
-                        createNodeWithValueSumToRootAndChildNodes(17, 28, null),
-                        createNodeWithValueSumToRootAndChildNodes(10, 21, List.of(
-                                createNodeWithValueSumToRootAndChildNodes(-5, 16, null)
+        return createNodeWithValueSumToRootAndChildren(6, 6, List.of(
+                createNodeWithValueSumToRootAndChildren(5, 11, List.of(
+                        createNodeWithValueSumToRootAndChildren(17, 28, null),
+                        createNodeWithValueSumToRootAndChildren(10, 21, List.of(
+                                createNodeWithValueSumToRootAndChildren(-5, 16, null)
                         ))
                 )),
-                createNodeWithValueSumToRootAndChildNodes(3, 9, null)
+                createNodeWithValueSumToRootAndChildren(3, 9, null)
         ));
     }
 }
