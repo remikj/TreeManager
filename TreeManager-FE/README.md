@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Usage
 
 ## Next steps
+- Add *Reset Tree* button to reset the tree
 - Separate from treeComponent.js: tree managing actions and actual tree drawing
 - Testing
 - Dev/Prod profiles

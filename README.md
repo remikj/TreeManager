@@ -125,6 +125,9 @@ In order to calculate sums tree needs to by saved by either: enabling automatic 
 - Either:
    - Separation of backend application and database + extending the docker-compose
    - Serving the frontend from backend application for all-in-one solution
+- Keeping track of changes
+  - Backend endpoint for current change-id or amount of changes made on tree
+  - Polling in frontend for change-id to keep the tree consistent
 - Publishing docker images to allow running without building
 - Specific steps for backend in frontend are listed in:
   - [TreeManager Backend Application README](TreeManager-BE/README.md)
