@@ -32,7 +32,7 @@ make run
 
 API should be available at http://localhost:8080/
 
-For details look into TreeManager-BE/README.md file
+For details look into [TreeManager Backend Application README](TreeManager-BE/README.md) file
 
 ### Using the website
 
