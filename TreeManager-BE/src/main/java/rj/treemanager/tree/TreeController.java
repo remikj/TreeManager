@@ -1,5 +1,6 @@
 package rj.treemanager.tree;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,7 @@ public class TreeController {
 
     @PutMapping
     @Operation(summary = "Override whole tree with tree from request body")
-    public void overrideTree(@RequestBody TreeNode newRootNode) {
+    public void overrideTree(@RequestBody @JsonView(TreeNode.AddWithChildrenView.class) TreeNode newRootNode) {
         rootNode.overrideRootNode(newRootNode);
     }
 
