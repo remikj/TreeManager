@@ -1,0 +1,16 @@
+version: '3'
+services:
+
+  tree-manager-be:
+    image: rj/tree-manager-be:latest
+    container_name: tree-manager-be
+    ports:
+      - "8080:8080"
+
+  tree-manager-fe:
+    image: rj/tree-manager-fe:latest
+    container_name: tree-manager-fe
+    ports:
+      - "80:3000"
+    environment:
+      REACT_APP_BACKEND_URL: http://localhost:8080

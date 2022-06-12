@@ -16,10 +16,10 @@ To run application execute command from TreeManager-BE directory:
 make run
 ```
 
-or (if maven is installed)
+of (with docker)
 
 ```bash
-mvn spring-boot:run
+make build-and-run-docker
 ```
 
 ### Data
@@ -268,7 +268,7 @@ curl --request POST \
 ### Building project with tests
 
 ```bash
-make build-all
+make build-with-tests
 ```
 
 ### Building project without tests
@@ -277,9 +277,16 @@ make build-all
 make build
 ```
 
+### Building docker image
+
+Image will be built with tag: rj/tree-manager-be:latest
+
+```bash
+make build-docker
+```
+
 ## Next steps
 
-- Dockerization
 - Separating DB (currently in memory DB is used)
 - Improvement of maven stages (adding profiles for cases)
 - Improvement of logging (adding logs for easier debugging)

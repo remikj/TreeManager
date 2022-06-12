@@ -1,1 +1,3 @@
-TreeManager Application
+# TreeManager Application
+
+## Usage
