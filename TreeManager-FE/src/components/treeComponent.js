@@ -95,7 +95,7 @@ export class TreeComponent extends React.Component {
             const nextTree = clone(this.state.tree);
             this.treeEditor.updateValueAndMarkedUnprocessed(nextTree, this.state.selectedNode.id, newValue)
             this.setState({
-                tree: nextTree, selectedNode: null
+                tree: nextTree, selectedNode: null, unprocessedChanges: true
             });
         }
     };
@@ -243,7 +243,6 @@ export class TreeComponent extends React.Component {
                                        buttonText={"Update Node Value"}></ValueForm>
                             <ValueForm processValue={this.addChildNode.bind(this)}
                                        buttonText={"Add Child Node"}></ValueForm>
-                            <button onClick={this.addChildNode}>Click</button>
                             <button onClick={this.deleteNode}>Delete Node</button>
                             <button onClick={this.startNodeCopy}>Copy Node</button>
                             <button onClick={this.startNodeMove}>Move Node</button>
